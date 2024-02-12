@@ -1,0 +1,42 @@
+This file covers the main components of the config file (JSON file) that the user should feed into the program.
+
+The "name" key is used for the output file name.
+The "path" key is used for passing the SD(Stable Difussion) model path.
+The "motion_module" key is used for passing the MM(Motion Module) model path.
+The "seed" key is used for passing the seed value for generation.
+
+----
+
+Now, we get to the main part, 
+"head_prompt": used for creating the initial scene of the video
+
+"prompt_map": used for creating the floe of the video, the user could write what happens in each second. User has to mention the frame index for the animation transission. For example, the video is 5 seconds long, 8 FPS. then the user should mention something like the below snippet.
+
+example:
+
+"prompt_map": {
+"0": "(standing,full_body), 5men_on_the_left, guns_in_hands, 5men_on_right, guns_in_hands, road_in_the_middle_with_people_walking, angry, tention, blue_sky, town",
+    "8": "(standing,full_body), 5men_on_the_left, guns_in_hands, 5men_on_right, guns_in_hands, road_in_the_middle_with_people_walking, angry, tention, blue_sky, town",
+    "16": "(standing,full_body), 5men_on_the_left_shouting, guns_in_hands, 5men_on_right_shouting, guns_in_hands, road_in_the_middle_with_people_walking, angry, tention, blue_sky, town",
+    "24": "(upper_body), 5men_on_the_left, guns_in_hands, 5men_on_right, guns_in_hands, guns firing, road_in_the_middle_with_people_walking, angry, tention, blue_sky, town",
+    "32": "(upper_body), 5men_on_the_left, guns_in_hands, 5men_on_right, guns_in_hands, guns_firing, road_in_the_middle_with_people_walking, angry, tention, blue_sky, town",
+}
+
+This will give the user a 5 second video with 8 FPS.
+
+"tail_prompt": used to mwntion the prompt for what happens in the last frame of the video
+
+"n_prompt": used for mentioning the models what the video should not be. 
+
+For example:
+"n_prompt": ["(worst quality, low quality:1.4),nudity, blurry"]
+
+to avoid ther said things in the video. also keep in mind that the interpretation of all the prompts depend on the SD model that is used. Some models might be wonderful at creating sceneic landscapes, and some might be good at creating hardcore action sequences. 
+
+
+the next important thing is the "output" key field that has the below parameters.
+
+"format": the output format of the video. (only mp4, gif and webm work for now)
+"fps": Frames per second (please make sure that FPS is less or equal to the total number of frames that you mention while executing the command to generate the animation)
+
+The rest of the key fields are "controlnet" parameters. In this implementation, we are not making use of control net (which is actually used for articulating spacial features of the animation). The users are most welcome to experiment around with those settings.

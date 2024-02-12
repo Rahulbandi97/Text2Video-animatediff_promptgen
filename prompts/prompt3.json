@@ -1,0 +1,239 @@
+{
+  "name": "T2V",
+  "path": "models/sd/xxmix9realistic_v40.safetensors",
+  "motion_module": "models/motion-module/mm_sd_v15_v2.ckpt",
+  "compile": false,
+  "seed": [-1],
+  "scheduler": "k_dpmpp_sde",
+  "steps": 20,
+  "guidance_scale": 10,
+  "clip_skip": 2,
+  "head_prompt": "In a quiet and well-lit classroom, the stage is set for an engaging mathematics class. Rows of desks neatly arranged, each student with a notebook and pencil, ready for intellectual exploration. Professor Williams, an esteemed mathematician, takes center stage to impart knowledge to a group of attentive students.",
+  "prompt_map": {
+    "0": "The quiet and well-lit classroom is adorned with educational posters, creating an ideal atmosphere for intellectual exploration.",
+    "8": "Rows of desks are neatly arranged, each student equipped with a notebook and pencil, eager to absorb the forthcoming mathematical wisdom.",
+    "16": "Professor Williams, an esteemed mathematician, begins the lesson, capturing the atmosphere of intellectual curiosity in the room.",
+    "24": "The camera dynamically pans across the classroom, highlighting the expressions of concentration and understanding on the students' faces.",
+    "32": "Much like our gym enthusiast Emily, Professor Williams becomes the focal point as he meticulously breaks down complex mathematical problems.",
+    "40": "The chalkboard is filled with intricate equations and diagrams, visualizing the complex world of mathematics.",
+    "48": "As the lesson progresses, the camera zooms in on the chalkboard, revealing the evolution of equations and the step-by-step process of solving mathematical problems.",
+    "56": "Professor Williams, like our gym-goer adding weights, introduces advanced concepts, building on the foundation laid earlier in the class.",
+    "64": "The students actively participate, raising hands, asking questions, and collaborating on problem-solving, creating an engaging educational experience.",
+    "72": "The classroom background, coupled with the professor's engaging teaching style, sets the stage for an enriching intellectual journey.",
+    "80": "In the final moments, the camera captures Professor Williams summarizing the key takeaways, filling the classroom with the echoes of mathematical mastery.",
+    "88": "The ambiance is filled with the sound of chalk against the board and the hum of intellectual discussion, reflecting the essence of learning and academic growth.",
+    "96": "As the class concludes, inspired and empowered students leave the room with a newfound appreciation for the beauty of mathematics.",
+    "104": "The scene ends with a shot of the empty classroom, now filled not only with desks and chalkboards but also with the promise of future academic achievements."
+  },
+  "tail_prompt": "Immerse yourself in the 'Mathematics Mastery' scenario, where Professor Williams guides students through the intricacies of mathematics, creating an environment of intellectual curiosity and paving the way for future academic achievements.",
+  "n_prompt": ["(worst quality, low quality:1.4), nudity, blurry"],
+  "lora_map": {},
+  "motion_lora_map": {},
+  "ip_adapter_map": {
+    "enable": true,
+    "input_image_dir": "ip_adapter_image/test",
+    "save_input_image": true,
+    "resized_to_square": false,
+    "scale": 0.5,
+    "is_plus_face": true,
+    "is_plus": true
+  },
+  "controlnet_map": {
+    "input_image_dir": "controlnet_image/test",
+    "max_samples_on_vram": 200,
+    "max_models_on_vram": 3,
+    "save_detectmap": true,
+    "preprocess_on_gpu": true,
+    "is_loop": true,
+
+    "controlnet_tile": {
+      "enable": true,
+      "use_preprocessor": true,
+      "preprocessor": {
+        "type": "none",
+        "param": {}
+      },
+      "guess_mode": false,
+      "controlnet_conditioning_scale": 1.0,
+      "control_guidance_start": 0.0,
+      "control_guidance_end": 1.0,
+      "control_scale_list": [0.5, 0.4, 0.3, 0.2, 0.1]
+    },
+    "controlnet_ip2p": {
+      "enable": true,
+      "use_preprocessor": true,
+      "guess_mode": false,
+      "controlnet_conditioning_scale": 1.0,
+      "control_guidance_start": 0.0,
+      "control_guidance_end": 1.0,
+      "control_scale_list": [0.5, 0.4, 0.3, 0.2, 0.1]
+    },
+    "controlnet_lineart_anime": {
+      "enable": true,
+      "use_preprocessor": true,
+      "guess_mode": false,
+      "controlnet_conditioning_scale": 1.0,
+      "control_guidance_start": 0.0,
+      "control_guidance_end": 1.0,
+      "control_scale_list": [0.5, 0.4, 0.3, 0.2, 0.1]
+    },
+    "controlnet_openpose": {
+      "enable": true,
+      "use_preprocessor": true,
+      "guess_mode": false,
+      "controlnet_conditioning_scale": 1.0,
+      "control_guidance_start": 0.0,
+      "control_guidance_end": 1.0,
+      "control_scale_list": [0.5, 0.4, 0.3, 0.2, 0.1]
+    },
+    "controlnet_softedge": {
+      "enable": true,
+      "use_preprocessor": true,
+      "preprocessor": {
+        "type": "softedge_pidsafe",
+        "param": {}
+      },
+      "guess_mode": false,
+      "controlnet_conditioning_scale": 1.0,
+      "control_guidance_start": 0.0,
+      "control_guidance_end": 1.0,
+      "control_scale_list": [0.5, 0.4, 0.3, 0.2, 0.1]
+    },
+    "controlnet_shuffle": {
+      "enable": true,
+      "use_preprocessor": true,
+      "guess_mode": false,
+      "controlnet_conditioning_scale": 1.0,
+      "control_guidance_start": 0.0,
+      "control_guidance_end": 1.0,
+      "control_scale_list": [0.5, 0.4, 0.3, 0.2, 0.1]
+    },
+    "controlnet_depth": {
+      "enable": true,
+      "use_preprocessor": true,
+      "guess_mode": false,
+      "controlnet_conditioning_scale": 1.0,
+      "control_guidance_start": 0.0,
+      "control_guidance_end": 1.0,
+      "control_scale_list": [0.5, 0.4, 0.3, 0.2, 0.1]
+    },
+    "controlnet_canny": {
+      "enable": true,
+      "use_preprocessor": true,
+      "guess_mode": false,
+      "controlnet_conditioning_scale": 1.0,
+      "control_guidance_start": 0.0,
+      "control_guidance_end": 1.0,
+      "control_scale_list": [0.5, 0.4, 0.3, 0.2, 0.1]
+    },
+    "controlnet_inpaint": {
+      "enable": true,
+      "use_preprocessor": true,
+      "guess_mode": false,
+      "controlnet_conditioning_scale": 1.0,
+      "control_guidance_start": 0.0,
+      "control_guidance_end": 1.0,
+      "control_scale_list": [0.5, 0.4, 0.3, 0.2, 0.1]
+    },
+    "controlnet_lineart": {
+      "enable": true,
+      "use_preprocessor": true,
+      "guess_mode": false,
+      "controlnet_conditioning_scale": 1.0,
+      "control_guidance_start": 0.0,
+      "control_guidance_end": 1.0,
+      "control_scale_list": [0.5, 0.4, 0.3, 0.2, 0.1]
+    },
+    "controlnet_mlsd": {
+      "enable": true,
+      "use_preprocessor": true,
+      "guess_mode": false,
+      "controlnet_conditioning_scale": 1.0,
+      "control_guidance_start": 0.0,
+      "control_guidance_end": 1.0,
+      "control_scale_list": [0.5, 0.4, 0.3, 0.2, 0.1]
+    },
+    "controlnet_normalbae": {
+      "enable": true,
+      "use_preprocessor": true,
+      "guess_mode": false,
+      "controlnet_conditioning_scale": 1.0,
+      "control_guidance_start": 0.0,
+      "control_guidance_end": 1.0,
+      "control_scale_list": [0.5, 0.4, 0.3, 0.2, 0.1]
+    },
+    "controlnet_scribble": {
+      "enable": true,
+      "use_preprocessor": true,
+      "guess_mode": false,
+      "controlnet_conditioning_scale": 1.0,
+      "control_guidance_start": 0.0,
+      "control_guidance_end": 1.0,
+      "control_scale_list": [0.5, 0.4, 0.3, 0.2, 0.1]
+    },
+    "controlnet_seg": {
+      "enable": true,
+      "use_preprocessor": true,
+      "guess_mode": false,
+      "controlnet_conditioning_scale": 1.0,
+      "control_guidance_start": 0.0,
+      "control_guidance_end": 1.0,
+      "control_scale_list": [0.5, 0.4, 0.3, 0.2, 0.1]
+    },
+    "controlnet_ref": {
+      "enable": false,
+      "ref_image": "ref_image/ref_sample.png",
+      "attention_auto_machine_weight": 0.3,
+      "gn_auto_machine_weight": 0.3,
+      "style_fidelity": 0.5,
+      "reference_attn": true,
+      "reference_adain": false,
+      "scale_pattern": [1.0]
+    }
+  },
+  "upscale_config": {
+    "scheduler": "k_dpmpp_sde",
+    "steps": 20,
+    "strength": 0.5,
+    "guidance_scale": 10,
+    "controlnet_tile": {
+      "enable": true,
+      "controlnet_conditioning_scale": 1.0,
+      "guess_mode": false,
+      "control_guidance_start": 0.0,
+      "control_guidance_end": 1.0
+    },
+    "controlnet_line_anime": {
+      "enable": false,
+      "controlnet_conditioning_scale": 1.0,
+      "guess_mode": false,
+      "control_guidance_start": 0.0,
+      "control_guidance_end": 1.0
+    },
+    "controlnet_ip2p": {
+      "enable": false,
+      "controlnet_conditioning_scale": 0.5,
+      "guess_mode": false,
+      "control_guidance_start": 0.0,
+      "control_guidance_end": 1.0
+    },
+    "controlnet_ref": {
+      "enable": false,
+      "use_frame_as_ref_image": false,
+      "use_1st_frame_as_ref_image": false,
+      "ref_image": "ref_image/path_to_your_ref_img.jpg",
+      "attention_auto_machine_weight": 1.0,
+      "gn_auto_machine_weight": 1.0,
+      "style_fidelity": 0.25,
+      "reference_attn": true,
+      "reference_adain": false
+    }
+  },
+  "output": {
+    "format": "mp4",
+    "fps": 8,
+    "encode_param": {
+      "crf": 10
+    }
+  }
+}

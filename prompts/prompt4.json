@@ -1,0 +1,241 @@
+{
+  "name": "T2V",
+  "path": "models/sd/xxmix9realistic_v40.safetensors",
+  "motion_module": "models/motion-module/mm_sd_v15_v2.ckpt",
+  "compile": false,
+  "seed": [-1],
+  "scheduler": "k_dpmpp_sde",
+  "steps": 20,
+  "guidance_scale": 10,
+  "clip_skip": 2,
+  "head_prompt": "In the early morning light, a bustling crowd gathers at the starting line of the city's annual marathon. The air is filled with excitement and anticipation as runners of all ages and backgrounds prepare to embark on a challenging journey.",
+  "prompt_map": {
+    "0": "The vibrant atmosphere at the starting line captivates with runners donning their gear and eagerly awaiting the starting signal.",
+    "8": "The city skyline forms a stunning backdrop as thousands of participants buzz with energy, ready for the annual marathon.",
+    "16": "A shot of the countdown clock intensifies the anticipation, signaling the imminent start of the marathon.",
+    "24": "As the runners set off, the camera dynamically follows the marathon route, showcasing the diversity of participants.",
+    "32": "From seasoned athletes to first-time runners, each individual contributes to the tapestry of the event.",
+    "40": "The marathon weaves through city streets, parks, and waterfronts, offering breathtaking views and unique challenges.",
+    "48": "The camera captures moments of camaraderie, struggle, and triumph as runners navigate the course.",
+    "56": "In the final stretch, the camera zooms in on the iconic finish line, where spectators cheer and the atmosphere is charged with emotion.",
+    "64": "The marathon becomes a test of endurance and resilience, with participants pushing through fatigue to achieve a personal victory.",
+    "72": "A shot of the clock ticking toward record times adds an element of suspense, highlighting the competitive aspect of the marathon.",
+    "80": "As runners cross the finish line, a sense of accomplishment and pride radiates through the crowd.",
+    "88": "The finish line becomes a symbolic moment of personal triumph, marking the culmination of the runners' challenging journey.",
+    "96": "Spectators, participants, and organizers share in the collective joy of a successful marathon event.",
+    "104": "The city's annual marathon leaves an indelible mark, promoting health, unity, and the spirit of achievement.",
+    "112": "Marathon participants embody the essence of determination, showcasing the power of the human spirit.",
+    "120": "The scene concludes with a panoramic view of the marathon's impact, creating lasting memories for participants and spectators alike."
+  },
+  "tail_prompt": "Immerse yourself in the 'Marathon Triumph' scenario, where the annual city marathon unfolds as a celebration of determination, unity, and personal achievement.",
+  "n_prompt": ["(worst quality, low quality:1.4), nudity, blurry"],
+  "lora_map": {},
+  "motion_lora_map": {},
+  "ip_adapter_map": {
+    "enable": true,
+    "input_image_dir": "ip_adapter_image/test",
+    "save_input_image": true,
+    "resized_to_square": false,
+    "scale": 0.5,
+    "is_plus_face": true,
+    "is_plus": true
+  },
+  "controlnet_map": {
+    "input_image_dir": "controlnet_image/test",
+    "max_samples_on_vram": 200,
+    "max_models_on_vram": 3,
+    "save_detectmap": true,
+    "preprocess_on_gpu": true,
+    "is_loop": true,
+
+    "controlnet_tile": {
+      "enable": true,
+      "use_preprocessor": true,
+      "preprocessor": {
+        "type": "none",
+        "param": {}
+      },
+      "guess_mode": false,
+      "controlnet_conditioning_scale": 1.0,
+      "control_guidance_start": 0.0,
+      "control_guidance_end": 1.0,
+      "control_scale_list": [0.5, 0.4, 0.3, 0.2, 0.1]
+    },
+    "controlnet_ip2p": {
+      "enable": true,
+      "use_preprocessor": true,
+      "guess_mode": false,
+      "controlnet_conditioning_scale": 1.0,
+      "control_guidance_start": 0.0,
+      "control_guidance_end": 1.0,
+      "control_scale_list": [0.5, 0.4, 0.3, 0.2, 0.1]
+    },
+    "controlnet_lineart_anime": {
+      "enable": true,
+      "use_preprocessor": true,
+      "guess_mode": false,
+      "controlnet_conditioning_scale": 1.0,
+      "control_guidance_start": 0.0,
+      "control_guidance_end": 1.0,
+      "control_scale_list": [0.5, 0.4, 0.3, 0.2, 0.1]
+    },
+    "controlnet_openpose": {
+      "enable": true,
+      "use_preprocessor": true,
+      "guess_mode": false,
+      "controlnet_conditioning_scale": 1.0,
+      "control_guidance_start": 0.0,
+      "control_guidance_end": 1.0,
+      "control_scale_list": [0.5, 0.4, 0.3, 0.2, 0.1]
+    },
+    "controlnet_softedge": {
+      "enable": true,
+      "use_preprocessor": true,
+      "preprocessor": {
+        "type": "softedge_pidsafe",
+        "param": {}
+      },
+      "guess_mode": false,
+      "controlnet_conditioning_scale": 1.0,
+      "control_guidance_start": 0.0,
+      "control_guidance_end": 1.0,
+      "control_scale_list": [0.5, 0.4, 0.3, 0.2, 0.1]
+    },
+    "controlnet_shuffle": {
+      "enable": true,
+      "use_preprocessor": true,
+      "guess_mode": false,
+      "controlnet_conditioning_scale": 1.0,
+      "control_guidance_start": 0.0,
+      "control_guidance_end": 1.0,
+      "control_scale_list": [0.5, 0.4, 0.3, 0.2, 0.1]
+    },
+    "controlnet_depth": {
+      "enable": true,
+      "use_preprocessor": true,
+      "guess_mode": false,
+      "controlnet_conditioning_scale": 1.0,
+      "control_guidance_start": 0.0,
+      "control_guidance_end": 1.0,
+      "control_scale_list": [0.5, 0.4, 0.3, 0.2, 0.1]
+    },
+    "controlnet_canny": {
+      "enable": true,
+      "use_preprocessor": true,
+      "guess_mode": false,
+      "controlnet_conditioning_scale": 1.0,
+      "control_guidance_start": 0.0,
+      "control_guidance_end": 1.0,
+      "control_scale_list": [0.5, 0.4, 0.3, 0.2, 0.1]
+    },
+    "controlnet_inpaint": {
+      "enable": true,
+      "use_preprocessor": true,
+      "guess_mode": false,
+      "controlnet_conditioning_scale": 1.0,
+      "control_guidance_start": 0.0,
+      "control_guidance_end": 1.0,
+      "control_scale_list": [0.5, 0.4, 0.3, 0.2, 0.1]
+    },
+    "controlnet_lineart": {
+      "enable": true,
+      "use_preprocessor": true,
+      "guess_mode": false,
+      "controlnet_conditioning_scale": 1.0,
+      "control_guidance_start": 0.0,
+      "control_guidance_end": 1.0,
+      "control_scale_list": [0.5, 0.4, 0.3, 0.2, 0.1]
+    },
+    "controlnet_mlsd": {
+      "enable": true,
+      "use_preprocessor": true,
+      "guess_mode": false,
+      "controlnet_conditioning_scale": 1.0,
+      "control_guidance_start": 0.0,
+      "control_guidance_end": 1.0,
+      "control_scale_list": [0.5, 0.4, 0.3, 0.2, 0.1]
+    },
+    "controlnet_normalbae": {
+      "enable": true,
+      "use_preprocessor": true,
+      "guess_mode": false,
+      "controlnet_conditioning_scale": 1.0,
+      "control_guidance_start": 0.0,
+      "control_guidance_end": 1.0,
+      "control_scale_list": [0.5, 0.4, 0.3, 0.2, 0.1]
+    },
+    "controlnet_scribble": {
+      "enable": true,
+      "use_preprocessor": true,
+      "guess_mode": false,
+      "controlnet_conditioning_scale": 1.0,
+      "control_guidance_start": 0.0,
+      "control_guidance_end": 1.0,
+      "control_scale_list": [0.5, 0.4, 0.3, 0.2, 0.1]
+    },
+    "controlnet_seg": {
+      "enable": true,
+      "use_preprocessor": true,
+      "guess_mode": false,
+      "controlnet_conditioning_scale": 1.0,
+      "control_guidance_start": 0.0,
+      "control_guidance_end": 1.0,
+      "control_scale_list": [0.5, 0.4, 0.3, 0.2, 0.1]
+    },
+    "controlnet_ref": {
+      "enable": false,
+      "ref_image": "ref_image/ref_sample.png",
+      "attention_auto_machine_weight": 0.3,
+      "gn_auto_machine_weight": 0.3,
+      "style_fidelity": 0.5,
+      "reference_attn": true,
+      "reference_adain": false,
+      "scale_pattern": [1.0]
+    }
+  },
+  "upscale_config": {
+    "scheduler": "k_dpmpp_sde",
+    "steps": 20,
+    "strength": 0.5,
+    "guidance_scale": 10,
+    "controlnet_tile": {
+      "enable": true,
+      "controlnet_conditioning_scale": 1.0,
+      "guess_mode": false,
+      "control_guidance_start": 0.0,
+      "control_guidance_end": 1.0
+    },
+    "controlnet_line_anime": {
+      "enable": false,
+      "controlnet_conditioning_scale": 1.0,
+      "guess_mode": false,
+      "control_guidance_start": 0.0,
+      "control_guidance_end": 1.0
+    },
+    "controlnet_ip2p": {
+      "enable": false,
+      "controlnet_conditioning_scale": 0.5,
+      "guess_mode": false,
+      "control_guidance_start": 0.0,
+      "control_guidance_end": 1.0
+    },
+    "controlnet_ref": {
+      "enable": false,
+      "use_frame_as_ref_image": false,
+      "use_1st_frame_as_ref_image": false,
+      "ref_image": "ref_image/path_to_your_ref_img.jpg",
+      "attention_auto_machine_weight": 1.0,
+      "gn_auto_machine_weight": 1.0,
+      "style_fidelity": 0.25,
+      "reference_attn": true,
+      "reference_adain": false
+    }
+  },
+  "output": {
+    "format": "mp4",
+    "fps": 8,
+    "encode_param": {
+      "crf": 10
+    }
+  }
+}

@@ -1,0 +1,65 @@
+body {
+    font-family: Arial, sans-serif;
+    text-align: center;
+    background-color: #f4f4f4;
+}
+
+h1 {
+    color: #333;
+}
+
+.container {
+    margin: 20px;
+}
+
+/* User Input Section */
+.form-container {
+    margin: 20px;
+}
+
+#descriptionInput,
+#fpsInput,
+#durationSelect,
+#motionModuleSelect,
+#stableDiffusionModelURL,
+#nameOfSDModel,
+#configPrompt,
+#wValue,
+#hValue,
+#lValue,
+#cValue,
+#headPrompt,
+#promptTravel,
+#tailPrompt,
+#negativePrompt {
+    width: 300px;
+    padding: 8px;
+    font-size: 16px;
+    margin-bottom: 10px;
+}
+
+/* Generate Video Button */
+#generateVideoButton {
+    padding: 8px 16px;
+    font-size: 16px;
+    background-color: #007BFF;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+}
+
+#generateVideoButton:hover {
+    background-color: #0056b3;
+}
+
+/* Video Container */
+#videoContainer {
+    margin-top: 20px;
+}
+
+/* Generated Video */
+#generatedVideo {
+    max-width: 100%;
+    border: 1px solid #ccc;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+}

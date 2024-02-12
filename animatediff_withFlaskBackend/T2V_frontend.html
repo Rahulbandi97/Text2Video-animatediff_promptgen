@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Text to Video Generator</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f2f2f2;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 50px auto;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        h1, h2 {
+            color: #333;
+        }
+
+        form {
+            margin-top: 20px;
+        }
+
+        label {
+            display: block;
+            margin: 10px 0 5px;
+            color: #2c3e50; /* Increased label color */
+        }
+
+        input, select, textarea {
+            width: 100%;
+            padding: 10px; /* Increased text area box size */
+            margin: 5px 0 15px;
+            box-sizing: border-box;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            background-color: #fff;
+            font-size: 16px; /* Increased font size */
+        }
+
+        textarea {
+            height: 120px; /* Increased text area height */
+        }
+
+        select#fileFormatSelect {
+            width: calc(100% - 22px); /* Reduced file format drop-down width */
+        }
+
+        button {
+            background-color: #4caf50;
+            color: white;
+            padding: 15px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 18px; /* Increased button font size */
+            margin-top: 15px; /* Moved button to the next line */
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+
+        a {
+            display: block;
+            margin-top: 10px;
+            color: #007bff;
+            text-decoration: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Text to Video Generator</h1>
+
+        <form action="/" method="POST">
+            <div class="form-container">
+                <!-- User Input Section -->
+                <h2>User Input</h2>
+                
+                <label for="generatePromptCheckbox">Generate Prompt</label>
+                <input type="checkbox" id="generatePromptCheckbox" name="generatePromptCheckbox">
+                
+                <label for="fpsInput">FPS</label>
+                <input type="number" id="fpsInput" name="fpsInput" placeholder="Enter FPS (e.g., 16)" min="1" step="1" disabled>
+                
+                <label for="durationSelect">Duration</label>
+                <select id="durationSelect" name="durationSelect" disabled>
+                    <option value="5">5 seconds</option>
+                    <option value="10">10 seconds</option>
+                    <option value="15">15 seconds</option>
+                    <option value="20">20 seconds</option>
+                    <option value="30">30 seconds</option>
+                </select>
+                
+                <label for="fileFormatSelect">File Format</label>
+                <select id="fileFormatSelect" name="fileFormatSelect" disabled>
+                    <option value="mp4">mp4</option>
+                    <option value="gif">gif</option>
+                    <option value="webm">webm</option>
+                </select>
+                
+                <label for="headPrompt">Head Prompt</label>
+                <textarea id="headPrompt" name="headPrompt" placeholder="Head Prompt" disabled></textarea>
+                
+                <label for="promptTravel">Prompt Travel</label>
+                <textarea id="promptTravel" name="promptTravel" placeholder="Prompt Travel" disabled></textarea>
+                
+                <label for="tailPrompt">Tail Prompt</label>
+                <textarea id="tailPrompt" name="tailPrompt" placeholder="Tail Prompt" disabled></textarea>
+                
+                <label for="negativePrompt">Negative Prompt</label>
+                <textarea id="negativePrompt" name="negativePrompt" placeholder="Negative Prompt" disabled></textarea>
+
+                <!-- Model Details Section -->
+                <h2>Model Details</h2>
+                
+                <label for="motionModuleSelect">Motion Module</label>
+                <select id="motionModuleSelect" name="motionModuleSelect">
+                    <option value="mm_sd_v14">mm_sd_v14</option>
+                    <option value="mm_sd_v15">mm_sd_v15</option>
+                    <option value="mm_sd_v15_v2">mm_sd_v15_v2</option>
+                </select>
+                
+                <label for="stableDiffusionModelURL">Stable Diffusion Model URL</label>
+                <input type="text" id="stableDiffusionModelURL" name="stableDiffusionModelURL" placeholder="Stable Diffusion Model URL">
+                
+                <label for="nameOfSDModel">Name of SD Model</label>
+                <input type="text" id="nameOfSDModel" name="nameOfSDModel" placeholder="Name of SD Model">
+                
+                <label for="configPrompt">Config Prompt</label>
+                <textarea id="configPrompt" name="configPrompt" placeholder="Config Prompt"></textarea>
+                
+                <label for="wValue">W Value</label>
+                <input type="number" id="wValue" name="wValue" placeholder="W Value">
+                
+                <label for="hValue">H Value</label>
+                <input type="number" id="hValue" name="hValue" placeholder="H Value">
+                
+                <label for="lValue">L Value</label>
+                <input type="number" id="lValue" name="lValue" placeholder="L Value">
+                
+                <label for="cValue">C Value</label>
+                <input type="number" id="cValue" name="cValue" placeholder="C Value">
+
+                <!-- Video Generation Section -->
+                {% if video_url %}
+                    <a href="{{ video_url }}" target="_blank" href="/video">Click this link to view and Download the Video</a>
+                {% endif %}
+                
+                <button type="submit" id="generateVideoButton">Generate Video</button>
+                
+            </div>
+        </form>
+    </div>
+
+    <script>
+        document.getElementById('generatePromptCheckbox').addEventListener('change', function () {
+            var userInputs = document.querySelectorAll('#fpsInput, #durationSelect, #fileFormatSelect, #headPrompt, #promptTravel, #tailPrompt, #negativePrompt');
+            
+            for (var i = 0; i < userInputs.length; i++) {
+                userInputs[i].disabled = !this.checked;
+            }
+        });
+    </script>
+</body>
+</html>
